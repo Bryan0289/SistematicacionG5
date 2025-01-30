@@ -1,0 +1,13 @@
+/* Estilos personalizados */
+.table thead th {
+    background-color: #343a40; /* Fondo negro */
+    color: white; /* Texto blanco */
+  }
+  
+  .table tbody tr {
+    background-color: white; /* Fondo blanco para las filas */
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f8f9fa; /* Color de fondo al pasar el mouse */
+  }

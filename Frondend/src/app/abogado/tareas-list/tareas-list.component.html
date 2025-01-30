@@ -1,0 +1,49 @@
+<div class="container mt-4" *ngIf="!viewForm">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Listado de Tareas</h2>
+    <button class="btn btn-primary" (click)="regresarCasos()">
+      Regresar
+    </button>
+    <button class="btn btn-primary" (click)="crearTarea()">
+      Crear Tarea
+    </button>
+  </div>
+
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha Límite</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Caso</th>
+          <th scope="col">Abogado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarea of tareas">
+          <th scope="row">{{ tarea.idTarea }}</th>
+          <td>{{ tarea.descripcion }}</td>
+          <td>{{ tarea.fechaLimite | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': tarea.estado === 'Completada',
+              'badge bg-warning': tarea.estado === 'En Progreso',
+              'badge bg-danger': tarea.estado === 'Pendiente'
+            }">
+              {{ tarea.estado }}
+            </span>
+          </td>
+          <td>{{ tarea.caso }}</td>
+          <td>{{ tarea.abogado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-form-tareas
+  *ngIf="viewForm"
+  [idCaso]="idCaso"
+  [cambiarEstado]="crearTarea">
+
+  </app-form-tareas>

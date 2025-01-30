@@ -1,0 +1,9 @@
+.ng-invalid.ng-touched {
+    border-color: #dc3545;
+  }
+  
+  /* Estilos para los mensajes de error */
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+  }

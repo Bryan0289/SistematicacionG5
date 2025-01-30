@@ -1,0 +1,83 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Formulario de Caso</h2>
+        <button class="btn btn-primary" (click)="cambiarEstado()">
+          Regresar
+        </button>
+      </div>
+    
+    <form [formGroup]="casoForm" (ngSubmit)="onSubmit()">
+      <!-- Campo Código -->
+      <div class="mb-3">
+        <label for="codigo" class="form-label">Código</label>
+        <input
+          type="text"
+          class="form-control"
+          id="codigo"
+          formControlName="codigo"
+          placeholder="Ingrese el código"
+        />
+      </div>
+  
+      <!-- Campo Fecha de Inicio -->
+      <div class="mb-3">
+        <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+        <input
+          type="date"
+          class="form-control"
+          id="fechaInicio"
+          formControlName="fechaInicio"
+        />
+      </div>
+  
+      <!-- Campo Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea
+          class="form-control"
+          id="descripcion"
+          formControlName="descripcion"
+          rows="3"
+          placeholder="Ingrese la descripción"
+        ></textarea>
+      </div>
+  
+      <!-- Select Tipo -->
+      <div class="mb-3">
+        <label for="idTipo" class="form-label">Tipo</label>
+        <select class="form-select" id="idTipo" formControlName="idTipo">
+          <option value="">Seleccione un tipo</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.id">
+            {{ tipo.nombre }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Select Cliente -->
+      <div class="mb-3">
+        <label for="idCliente" class="form-label">Cliente</label>
+        <select class="form-select" id="idCliente" formControlName="idCliente">
+          <option value="">Seleccione un cliente</option>
+          <option *ngFor="let cliente of clientes" [value]="cliente.id">
+            {{ cliente.nombre }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Select Abogado -->
+      <div class="mb-3">
+        <label for="idAbogado" class="form-label">Abogado</label>
+        <select class="form-select" id="idAbogado" formControlName="idAbogado">
+          <option value="">Seleccione un abogado</option>
+          <option *ngFor="let abogado of abogados" [value]="abogado.id">
+            {{ abogado.nombre }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Botón de Enviar -->
+      <button type="submit" class="btn btn-primary" [disabled]="casoForm.invalid">
+        Guardar
+      </button>
+    </form>
+  </div>
